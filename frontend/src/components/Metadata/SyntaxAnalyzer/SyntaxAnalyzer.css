@@ -1,0 +1,27 @@
+.node__root > circle {
+  fill: #ffd166;
+}
+
+.node__root .rd3t-label__title {
+  fill: #e6b800;
+}
+
+.node__branch > circle {
+  fill: #61afef;
+}
+
+.node__branch .rd3t-label__title {
+  fill: #a8c9ff;
+}
+
+.node__leaf > circle {
+  fill: #98c379;
+}
+
+.node__leaf .rd3t-label__title {
+  fill: #b3d6a3;
+}
+
+.rd3t-link {
+  stroke: #fff !important;
+}

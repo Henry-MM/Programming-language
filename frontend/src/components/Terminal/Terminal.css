@@ -1,0 +1,18 @@
+.react-terminal-wrapper {
+  padding: unset !important;
+  border-radius: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  font-size: inherit !important;
+  background: inherit !important;
+  color: inherit !important;
+}
+
+.react-terminal {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.react-terminal-window-buttons {
+  display: none !important;
+}
