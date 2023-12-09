@@ -131,23 +131,33 @@ variables = {}
 def run(p):
     if type(p) == tuple:
         if p[0] == '+':
-            return run(p[1]) + run(p[2])
+            try:
+                return run(p[1]) + run(p[2])
+            except Exception as e:
+                raise Exception(f'Cannot add {p[1]} and {p[2]}, Invalid types.')
         elif p[0] == '-':
-            return run(p[1]) - run(p[2])
+            try:
+                return run(p[1]) - run(p[2])
+            except Exception as e:
+                raise Exception(f'Cannot subtract {p[2]} from {p[1]}, Invalid types.')
         elif p[0] == '=':
             variables[p[1]] = run(p[2])
-            # return variables
         elif p[0] == '.':
-            return run(p[1]) + run(p[2])
+            try:
+                return run(p[1]) + run(p[2])
+            except Exception as e:
+                raise Exception(f'Cannot concatenate {p[1]} and {p[2]}, Invalid types.')
         elif p[0] == '*':
-            return run(p[1]) * run(p[2])
+            try:
+                return run(p[1]) * run(p[2])
+            except Exception as e:
+                raise Exception(f'Cannot repeat {p[1]} {p[2]} times, Invalid types.')
         elif p[0] == 'id':
             if p[1] in variables:
                 return variables[p[1]]
             else:
-                return 'Undeclared variable'
+                raise Exception(f'The variable {p[1]} is not defined.')
         elif p[0] == 'print':
-            # print(run(p[1]))
             return run(p[1])
     else:
         return p
