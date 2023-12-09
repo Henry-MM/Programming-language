@@ -23,6 +23,20 @@ const terminalReducer: Reducer<TerminalInputs, TerminalAction> = function (
       ];
     }
 
+    case "writeError": {
+      return [
+        ...state,
+        <TerminalInput prompt={action?.payload?.prompt ?? "$"}>
+          <p className="text-red-400 inline-block">
+            Syntax Error
+            {action?.payload?.line
+              ? ` (line ${action.payload.line})`
+              : ""}: {action?.payload?.content ?? ""}
+          </p>
+        </TerminalInput>,
+      ];
+    }
+
     case "clear": {
       return [];
     }
