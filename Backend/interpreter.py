@@ -186,6 +186,6 @@ def get_tokens(code_line):
 def get_tree(code_line):
     return parser.parse(code_line)
 
-def reset():
+def clean_variables():
     global variables
     variables = {}

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from interpreter import execute_line, get_variables, get_tokens, get_tree
+from interpreter import execute_line, get_variables, get_tokens, get_tree, clean_variables
 from fastapi.middleware.cors import CORSMiddleware
 import asyncio
 import preprocessor
@@ -47,7 +47,7 @@ async def root(codeline: CodeLine):
         }
     except Exception as e:
         return {
-            "output": f"Error: {e}",
+            "output": f"{e}",
             "isSuccess": False,
             "line": counter,
             "tokens": [],
@@ -61,9 +61,8 @@ def memory():
 @app.get("/reset")
 def reset():
     global counter
-    global variables
+    clean_variables()
     counter = 0
-    variables = {}
     return {
         "output": "Reset successful",
         "isSuccess": True,
