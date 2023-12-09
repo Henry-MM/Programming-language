@@ -44,7 +44,7 @@ function CompileButton() {
         terminalDispatcher({
           type: "writeError",
           payload: {
-            content: result.output ?? "Check your code",
+            content: result.output!,
             line: result.line,
           },
         });

@@ -5,7 +5,7 @@ const url = "http://127.0.0.1:8000";
 
 export const compileOneLine = async function (
   lineOfCode: LineOfCode
-): Promise<CompilerResult | null> {
+): Promise<CompilerResult> {
   try {
     const resp = await fetch(url, {
       method: "POST",
@@ -21,7 +21,14 @@ export const compileOneLine = async function (
     else throw new Error("Compiler didnt return data");
   } catch (error) {
     console.log(`Something went wrong on compileOneLine: ${error}`);
-    return null;
+
+    return {
+      output: "Compiler error",
+      tokens: [],
+      tree: [""],
+      isSuccess: false,
+      line: 0,
+    };
   }
 };
 
@@ -35,6 +42,13 @@ export const resetCompiler = async function () {
     else throw new Error("Compiler didnt return data");
   } catch (error) {
     console.log(`Something went wrong on resetCompiler: ${error}`);
-    return null;
+
+    return {
+      output: "Compiler error",
+      tokens: [],
+      tree: [""],
+      isSuccess: false,
+      line: 0,
+    };
   }
 };
