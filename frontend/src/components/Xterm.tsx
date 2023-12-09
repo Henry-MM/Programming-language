@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Terminal } from "xterm";
-import { FitAddon } from "xterm-addon-fit";
 import "xterm/css/xterm.css";
 import "./Xterm.css";
 
@@ -79,23 +78,23 @@ function Xterm() {
     };
   }, []);
 
-  function showLoader(term) {
-    const frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]; // Loading animation frames
-    let currentFrame = 0;
+  // function showLoader(term) {
+  //   const frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]; // Loading animation frames
+  //   let currentFrame = 0;
 
-    const interval = setInterval(() => {
-      term.clear(); // Clear the terminal
-      term.write(`Loading ${frames[currentFrame]}`); // Write the current frame
-      currentFrame = (currentFrame + 1) % frames.length;
-    }, 100);
+  //   const interval = setInterval(() => {
+  //     term.clear(); // Clear the terminal
+  //     term.write(`Loading ${frames[currentFrame]}`); // Write the current frame
+  //     currentFrame = (currentFrame + 1) % frames.length;
+  //   }, 100);
 
-    // Stop the loader after 5 seconds (5000 milliseconds)
-    setTimeout(() => {
-      clearInterval(interval);
-      term.clear(); // Clear the terminal content after loading
-      term.write("Loading complete!\n");
-    }, 5000);
-  }
+  //   // Stop the loader after 5 seconds (5000 milliseconds)
+  //   setTimeout(() => {
+  //     clearInterval(interval);
+  //     term.clear(); // Clear the terminal content after loading
+  //     term.write("Loading complete!\n");
+  //   }, 5000);
+  // }
 
   return (
     <div

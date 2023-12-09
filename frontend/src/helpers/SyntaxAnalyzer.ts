@@ -1,41 +1,41 @@
 import { CompilerTreeFormat } from "../types/Compiler";
 import { TreeNode } from "../types/SyntaxTree";
 
-const sample = {
-  print: ["print", "holis ♥"],
-  asignation: ["=", "a", "hola"],
-  printID: ["print", ["id", "a"]],
-  concatenation: ["=", "a", [".", "hola", " adios"]],
-  printAritmetic: ["print", ["+", 1, ["-", 1, ["*", 2, 5]]]],
-};
+// const sample = {
+//   print: ["print", "holis ♥"],
+//   asignation: ["=", "a", "hola"],
+//   printID: ["print", ["id", "a"]],
+//   concatenation: ["=", "a", [".", "hola", " adios"]],
+//   printAritmetic: ["print", ["+", 1, ["-", 1, ["*", 2, 5]]]],
+// };
 
-const result = {
-  printAritmetic: {
-    name: "print",
-    children: [
-      {
-        name: "*",
-        children: [
-          {
-            name: "1",
-          },
-          {
-            name: "-",
-            children: [
-              {
-                name: "1",
-              },
-              {
-                name: "*",
-                children: [{ name: "2" }, { name: "5" }],
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-};
+// const result = {
+//   printAritmetic: {
+//     name: "print",
+//     children: [
+//       {
+//         name: "*",
+//         children: [
+//           {
+//             name: "1",
+//           },
+//           {
+//             name: "-",
+//             children: [
+//               {
+//                 name: "1",
+//               },
+//               {
+//                 name: "*",
+//                 children: [{ name: "2" }, { name: "5" }],
+//               },
+//             ],
+//           },
+//         ],
+//       },
+//     ],
+//   },
+// };
 
 export const parseTree = function (
   treeRawFormat: CompilerTreeFormat | string | number
