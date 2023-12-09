@@ -39,21 +39,26 @@ const result = {
 
 export const parseTree = function (
   treeRawFormat: CompilerTreeFormat | string | number
-) {
+): TreeNode | object {
   // If is a primitive type,
   if (!Array.isArray(treeRawFormat)) return { name: treeRawFormat };
 
   // If is an empty array
-  if (Array.isArray(treeRawFormat) && !treeRawFormat.length) return [];
+  if (Array.isArray(treeRawFormat) && !treeRawFormat.length) return {};
 
   // If only have one item
   if (Array.isArray(treeRawFormat) && treeRawFormat.length == 1)
     return { name: treeRawFormat[0] };
 
   // If have more than one item on the array
-  const node: TreeNode = {
-    name: treeRawFormat[0],
-  };
+  const node = treeRawFormat.reduce(
+    (node, value, i) => {
+      if (i === 0) node.name = value.toString();
+      if (i > 0) node.children?.push(parseTree(value) as TreeNode);
+      return node;
+    },
+    { name: "", children: [] } as TreeNode
+  );
 
   return node;
 };

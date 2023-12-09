@@ -1,4 +1,4 @@
 export interface TreeNode {
-  name: string;
+  name: string | number;
   children?: TreeNode[];
 }

@@ -5,7 +5,7 @@ export interface Token {
 
 export type CompilerTreeFormat =
   | [string | number]
-  | [string, string | number | CompilerTreeFormat[]];
+  | [string, string | number | CompilerTreeFormat];
 
 export interface CompilerResult {
   output: string | null;

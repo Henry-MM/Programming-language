@@ -24,7 +24,7 @@ function Editor() {
   };
 
   return (
-    <div id="editor" className="p-2 overflow-auto">
+    <div id="editor" className="p-2 overflow-auto text-base">
       <ReactCodeMirror
         height="100%"
         width="100%"
