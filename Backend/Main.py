@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from interpreter import execute_line, get_variables, get_tokens, get_tree, clean_variables
 from fastapi.middleware.cors import CORSMiddleware
 import asyncio
-import preprocessor
+from preprocessor import preprocess
 
 counter_lock = asyncio.Lock()
 counter = 0
@@ -23,7 +23,8 @@ class CodeLine(BaseModel):
 @app.post("/")
 async def root(codeline: CodeLine):
     global counter
-    codeline.line = preprocessor.preprocess(codeline.line)
+    codeline.line = preprocess(codeline.line)
+    print(f'Line {counter}: {codeline.line}')
 
     async with counter_lock:
         counter += 1
