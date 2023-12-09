@@ -1,55 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./SyntaxAnalyzer.css";
 import { useCodeEditorContext } from "../../../contexts/CodeEditorContext";
 import { parseTree } from "../../../helpers/SyntaxAnalyzer";
 import { TreeNode } from "../../../types/SyntaxTree";
 import SytaxTree from "../../UI/SytaxTree";
-
-const orgChart = {
-  name: "print",
-  children: [
-    {
-      name: "+",
-      children: [
-        {
-          name: "1",
-        },
-        {
-          name: "-",
-          children: [
-            {
-              name: "1",
-            },
-            {
-              name: "*",
-              children: [{ name: "2" }, { name: "5" }],
-            },
-          ],
-        },
-      ],
-    },
-  ],
-};
+import DefaultText from "../DefaultText";
 
 function SyntaxAnalyzer() {
   const codeEditor = useCodeEditorContext();
   const [treesData, setTreesData] = useState<TreeNode[]>([]);
-
-  console.log(codeEditor?.compilerResults);
-
-  if (codeEditor?.compilerResults?.[0]?.tree)
-    console.log(":0", parseTree(codeEditor?.compilerResults?.[0].tree));
-
-  // console.log(
-  //   codeEditor?.compilerResults?.[0]?.tree?.flatMap((value) => {
-  //     console.log(value);
-  //     return value;
-  //   })
-  // );
-
-  // console.log("h", codeEditor?.compilerResults?.[0]?.tree?.flat(2));
-
-  // console.log("wat", parseDataToTree(codeEditor?.compilerResults?.[0]?.tree));
 
   useEffect(() => {
     codeEditor?.compilerResults.forEach(({ tree }) =>
@@ -63,16 +22,6 @@ function SyntaxAnalyzer() {
       setTreesData([]);
     };
   }, [codeEditor.compilerResults]);
-
-  // useEffect(() => {
-  //   const ID = setTimeout(() => {
-  //     setSecond((state) => ({ ...state, pao: "cosita hermosa" }));
-  //   }, 5000);
-
-  //   return () => {
-  //     clearTimeout(ID);
-  //   };
-  // }, []);
 
   return (
     <div className="h-full w-full divide-y">
@@ -89,7 +38,7 @@ function SyntaxAnalyzer() {
           />
         ))
       ) : (
-        <h3 className="p-4">Tree not available</h3>
+        <DefaultText>Tree not found</DefaultText>
       )}
     </div>
   );

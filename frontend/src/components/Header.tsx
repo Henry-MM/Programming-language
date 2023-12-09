@@ -1,4 +1,3 @@
-import React from "react";
 import CompileButton from "./CompileButton";
 
 function Header() {
