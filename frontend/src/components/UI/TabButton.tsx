@@ -14,19 +14,17 @@ function TabButton({
   Icon,
   ...props
 }: PropsWithChildren<Props>) {
-  const activeStyle = active ? "text-[#282c34] bg-stone-200" : "";
+  const activeStyle = active
+    ? "text-btn-blue bg-btn-yellow hover:bg-btn-yellow-hover font-semibold"
+    : "bg-[#282c34] hover:bg-[#30343e] text-white";
 
   return (
     <button
       className={`
         inline-block
         p-1
-        text-white-600
-        bg-[#282c34]
         rounded-t-xl
         active
-        dark:bg-gray-800
-        dark:text-blue-500
         border
         border-solid
         ${activeStyle}
@@ -37,7 +35,7 @@ function TabButton({
     >
       <div className="flex justify-center items-center gap-1">
         {children}
-        {Icon ? <Icon className="text-inherit" /> : ""}
+        {Icon ? <Icon className="text-inherit font-semibold" /> : ""}
       </div>
     </button>
   );

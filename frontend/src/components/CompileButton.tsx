@@ -66,7 +66,18 @@ function CompileButton() {
   return (
     <button
       type="button"
-      className="flex items-center gap-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+      className="
+        flex 
+        items-center 
+        gap-2 
+        bg-btn-yellow
+        hover:bg-btn-yellow-hover
+        text-btn-blue
+        font-bold 
+        py-2 
+        px-4 
+        rounded
+      "
       onClick={onClickHandler}
     >
       <span>Run</span>
